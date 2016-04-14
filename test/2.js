@@ -4,14 +4,26 @@ assert = require('assertthat');
 
 describe('Currying', function () {
   function plus(arg) {
+    var value;
+    if (typeof  arg === 'function') {
+      value = arg();
+    } else {
+      value = arg;
+    }
     return function (n) {
-      return n + arg();
+      return n + value;
     }
   }
 
   function times(arg) {
+    var value;
+    if (typeof  arg === 'function') {
+      value = arg();
+    } else {
+      value = arg;
+    }
     return function (n) {
-      return n * arg();
+      return n * value;
     }
   }
 
@@ -53,10 +65,12 @@ describe('Currying', function () {
   it('should perform plus', function () {
     assert.that(zero(plus(one())) === 1).is.true();
     assert.that(four(plus(nine())) === 13).is.true();
+    assert.that(four(plus(four(plus(nine())))) === 17).is.true();
   });
 
   it('should perform times', function () {
     assert.that(seven(times(five())) === 35).is.true();
+    assert.that(seven(times(seven(times(five())))) === 245).is.true();
   });
 
   it('should perform minus', function () {
