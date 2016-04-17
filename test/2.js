@@ -1,5 +1,3 @@
-'use strict;'
-
 var assert = require('assertthat');
 
 function plus(arg) {

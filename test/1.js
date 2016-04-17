@@ -1,5 +1,3 @@
-'use strict;'
-
 var assert = require('assertthat');
 
 // One can use binary literals, thanks to ES6
