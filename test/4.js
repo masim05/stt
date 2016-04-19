@@ -78,7 +78,7 @@ function step(states) {
   };
 }
 
-describe.only('Schedule', () => {
+describe('Schedule', () => {
 
   it('should work on vendor\'s test', () => {
     var input = [
